@@ -38,6 +38,29 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public IActionResult SaveResponse(EquipmentRequestModel request)
+    {
+        // TODO validation
+        if (ModelState.IsValid)
+        {
+            // if (RequestRepository.IsDurationPositive(request.Duration) == true)
+            // {
+            // TODO save to database
+            RequestRepository.ID++;
+            request.ID = RequestRepository.ID;
+            RequestRepository.AddResponse(request);
+
+            // TODO show message to the user
+            return View("Confirmation", request);
+            // }
+
+
+        }
+
+        return View("RequestForm");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
