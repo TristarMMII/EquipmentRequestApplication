@@ -1,7 +1,51 @@
+@model IEnumerable<EquipmentRequestModel>
 @{
     ViewData["Title"] = "All Equipment Listing";
+    int counter = 0;
+    bool available = true;
 }
 
 <div class="text-center">
     <h1 class="display-4">All Equipment Listing</h1>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID #</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Availablity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var myType in Enum.GetValues(typeof(EquipmentType)))
+            {
+
+                counter = counter + 1;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@myType</td>
+
+                    <td>@EnumDescription.GetDescription(myType)</td>
+                    @* //TODO is this dynamic? *@
+                    @if (available == true)
+                    {
+                        <td class="Available">@available</td>
+                        available = false;
+                    }
+                    else
+                    {
+                        <td class="NotAvailable">@available</td>
+                        available = true;
+                    }
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
 </div>

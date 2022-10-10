@@ -28,3 +28,11 @@ p {
 .validation-summary-errors {
   color: red;
 }
+
+.Available {
+  color: green;
+}
+
+.NotAvailable {
+  color: red;
+}

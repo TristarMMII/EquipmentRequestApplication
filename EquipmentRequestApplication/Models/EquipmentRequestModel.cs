@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,15 +15,20 @@ namespace EquipmentRequestApplication.Models
 
     public enum EquipmentType
     {
+        [Description("Macbook Pro with i5")]
         Laptop,
+        [Description("Iphone 14 Pro")]
         Phone,
+        [Description("Ipad Pro")]
         Tablet,
+        [Description("Other Devices")]
         Another
     }
 
+
+
     public class EquipmentRequestModel
     {
-
         [Required]
         public string Name { get; set; }
 

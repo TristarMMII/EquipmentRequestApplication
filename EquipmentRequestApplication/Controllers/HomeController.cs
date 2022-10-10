@@ -18,9 +18,9 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult EquipmentListing()
+    public IActionResult AllEquipment()
     {
-        return View();
+        return View("EquipmentListing");
     }
 
     public IActionResult AvailableEquipment()
