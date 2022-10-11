@@ -6,6 +6,7 @@ using System.ComponentModel;
 
 namespace EquipmentRequestApplication.Models
 {
+    // this class allows the extraction of description attributes from enums
     public static class EnumDescription
     {
         public static string GetDescription(this Object e)

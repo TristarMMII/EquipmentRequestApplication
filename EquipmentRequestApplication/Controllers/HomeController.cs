@@ -13,46 +13,54 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    //home page
     public IActionResult Index()
     {
         return View();
     }
 
+    //All Equipment page
     public IActionResult AllEquipment()
     {
         return View("EquipmentListing");
     }
 
+    //available equipment page
     public IActionResult AvailableEquipment()
     {
         return View();
     }
 
+    //request form
     public IActionResult RequestForm()
     {
         return View();
     }
 
+    //Requests or admin page
     public IActionResult Requests()
     {
         return View("AdminPage", RequestRepository.GetComingRequests());
     }
 
+    //saves response from user request form
     [HttpPost]
     public IActionResult SaveResponse(EquipmentRequestModel request)
     {
         //validation
         if (ModelState.IsValid)
         {
-            // save to database
+            //increment request ID
             RequestRepository.ID++;
             request.ID = RequestRepository.ID;
+
+            // save to database
             RequestRepository.AddResponse(request);
 
             // show message to the user
             return View("Confirmation", request);
         }
-
+        //return to form if form invalid
         return View("RequestForm");
     }
 

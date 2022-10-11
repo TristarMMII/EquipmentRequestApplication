@@ -7,10 +7,13 @@ namespace EquipmentRequestApplication.Models
 {
     public class RequestRepository
     {
-        private const bool V = true;
+        //request id
         public static int ID;
+
+        // list of requests
         private static List<EquipmentRequestModel> _requests = new List<EquipmentRequestModel>();
 
+        //add requests to list
         public static void AddResponse(EquipmentRequestModel request)
         {
 
@@ -18,6 +21,7 @@ namespace EquipmentRequestApplication.Models
 
         }
 
+        //return all available requests
         public static IEnumerable<EquipmentRequestModel> GetComingRequests()
         {
             return _requests.Where(x => x.ID > 0);
