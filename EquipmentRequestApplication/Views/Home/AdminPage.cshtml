@@ -1,7 +1,39 @@
+@model IEnumerable<EquipmentRequestModel>
+
 @{
     ViewData["Title"] = "Admin Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Admin Page</h1>
+</div>
+
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <th scope="row">@request.EquipmentType</th>
+                    <td>@request.Name</td>
+                    <td>@request.RoleType</td>
+                    <td>
+                        <button type="button" class="btn btn-success">Accept</button>
+                        <button type="button" class="btn btn-danger">Deny</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
 </div>

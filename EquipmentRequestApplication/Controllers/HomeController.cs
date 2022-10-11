@@ -33,29 +33,24 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult AdminPage()
+    public IActionResult Requests()
     {
-        return View();
+        return View("AdminPage", RequestRepository.GetComingRequests());
     }
 
     [HttpPost]
     public IActionResult SaveResponse(EquipmentRequestModel request)
     {
-        // TODO validation
+        //validation
         if (ModelState.IsValid)
         {
-            // if (RequestRepository.IsDurationPositive(request.Duration) == true)
-            // {
-            // TODO save to database
+            // save to database
             RequestRepository.ID++;
             request.ID = RequestRepository.ID;
             RequestRepository.AddResponse(request);
 
-            // TODO show message to the user
+            // show message to the user
             return View("Confirmation", request);
-            // }
-
-
         }
 
         return View("RequestForm");

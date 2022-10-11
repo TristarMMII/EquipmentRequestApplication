@@ -9,23 +9,19 @@ namespace EquipmentRequestApplication.Models
     {
 
         public static int ID;
-        private static List<EquipmentRequestModel> _responses = new List<EquipmentRequestModel>();
+        private static List<EquipmentRequestModel> _requests = new List<EquipmentRequestModel>();
 
         public static void AddResponse(EquipmentRequestModel request)
         {
 
-            _responses.Add(request);
+            _requests.Add(request);
 
         }
 
-        // public static bool IsDurationPositive(int duration)
-        // {
-        //     //check if duraiton is below 0
-        //     if (duration > 0)
-        //     {
-        //         return true;
-        //     }
-        //     return false;
-        // }
+        public static IEnumerable<EquipmentRequestModel> GetComingRequests()
+        {
+            return _requests.Where(x => x.ID > 0);
+        }
+
     }
 }
