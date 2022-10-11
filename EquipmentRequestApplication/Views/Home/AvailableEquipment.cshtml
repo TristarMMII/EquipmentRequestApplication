@@ -1,9 +1,45 @@
 @model IEnumerable<EquipmentRequestModel>
+
 @{
     ViewData["Title"] = "Available Equipment";
-    @* int counter = 0; *@
+    int counter = 0;
+    EquipmentRequestModel available = new EquipmentRequestModel();
+
 }
 
 <div class="text-center">
     <h1 class="display-4">Available Equipment</h1>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID #</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Availablity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var myType in Enum.GetValues(typeof(EquipmentType)))
+            {
+
+                counter = counter + 1;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@myType</td>
+
+                    <td>@EnumDescription.GetDescription(myType)</td>
+
+                    @* Equpiment will never not be true, since admin page isn't implemented, so im unsure what the point of
+                        this page is? *@
+                    @if (available.IsAvailable == true)
+                    {
+                        <td class="Available">@available.IsAvailable</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

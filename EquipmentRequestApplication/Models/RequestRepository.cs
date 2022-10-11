@@ -7,7 +7,7 @@ namespace EquipmentRequestApplication.Models
 {
     public class RequestRepository
     {
-
+        private const bool V = true;
         public static int ID;
         private static List<EquipmentRequestModel> _requests = new List<EquipmentRequestModel>();
 
@@ -22,6 +22,5 @@ namespace EquipmentRequestApplication.Models
         {
             return _requests.Where(x => x.ID > 0);
         }
-
     }
 }

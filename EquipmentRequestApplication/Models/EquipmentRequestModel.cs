@@ -55,6 +55,6 @@ namespace EquipmentRequestApplication.Models
 
         public int ID { get; set; }
 
-        // public bool Available { get; set; } = true;
+        public bool IsAvailable { get; set; } = true;
     }
 }

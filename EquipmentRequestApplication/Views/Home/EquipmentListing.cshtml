@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "All Equipment Listing";
     int counter = 0;
-    bool available = true;
+    EquipmentRequestModel available = new EquipmentRequestModel();
 }
 
 <div class="text-center">
@@ -29,16 +29,13 @@
                     <td>@myType</td>
 
                     <td>@EnumDescription.GetDescription(myType)</td>
-                    @* //TODO is this dynamic? *@
-                    @if (available == true)
+                    @if (available.IsAvailable == true)
                     {
-                        <td class="Available">@available</td>
-                        available = false;
+                        <td class="Available">@available.IsAvailable</td>
                     }
                     else
                     {
-                        <td class="NotAvailable">@available</td>
-                        available = true;
+                        <td class="NotAvailable">@available.IsAvailable</td>
                     }
 
 
